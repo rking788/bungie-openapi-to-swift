@@ -1,5 +1,5 @@
 //
-//  ApiDefinitions.swift
+//  EnumDefinitions.swift
 //  ManifestReport
 //
 //  Copyright © 2019 Rob King. All rights reserved.

@@ -5,6 +5,7 @@ import (
 	"flag"
 	"fmt"
 	"os"
+	"sort"
 	"strconv"
 	"strings"
 	"text/template"
@@ -38,14 +39,19 @@ type SchemaEntry struct {
 }
 
 type Property struct {
-	Type        string     `json:"type"`
-	Description string     `json:"description"`
-	Format      string     `json:"format"`
-	EnumRef     *Reference `json:"x-enum-reference"`
+	Type             string     `json:"type"`
+	Description      string     `json:"description"`
+	Format           string     `json:"format"`
+	EnumRef          *Reference `json:"x-enum-reference"`
+	MappedDefinition *Reference `json:"x-mapped-definition"`
 }
 
 func (p *Property) isEnumReference() bool {
 	return p.EnumRef != nil
+}
+
+func (p *Property) isMappedDefinition() bool {
+	return p.MappedDefinition != nil
 }
 
 type Reference struct {
@@ -60,6 +66,14 @@ func (r *Reference) cleanupRef() string {
 	return strings.Replace(r.Ref, "#/components/schemas/", "", 1)
 }
 
+func (r *Reference) isDefinitionTable() bool {
+	return strings.Contains(r.Ref, "Destiny.Definitions") && strings.HasSuffix(r.Ref, "Definition")
+}
+
+func (r *Reference) tableName() string {
+	return r.Ref[strings.LastIndex(r.Ref, ".")+1:]
+}
+
 type EnumValue struct {
 	NumericValue string `json:"numericValue"`
 	Identifier   string `json:"identifier"`
@@ -68,14 +82,26 @@ type EnumValue struct {
 //***  Output Types ***//
 
 type SwiftResult struct {
-	Enums    []EnumResult
-	EnumRefs []EnumReference
+	Enums             []EnumResult
+	EnumRefs          []EnumReference
+	MappedDefinitions []MappedDefinition
+}
+
+func (r *SwiftResult) sortResults() {
+	sort.Sort(alphabeticalEnumResult(r.Enums))
+	sort.Sort(alphabeticalEnumReferences(r.EnumRefs))
+	sort.Sort(alphabeticalMappedDefinitions(r.MappedDefinitions))
 }
 
 type EnumResult struct {
 	Name   string
 	Values []EnumResultValue
 }
+type alphabeticalEnumResult []EnumResult
+
+func (r alphabeticalEnumResult) Len() int           { return len(r) }
+func (r alphabeticalEnumResult) Less(i, j int) bool { return strings.Compare(r[i].Name, r[j].Name) < 0 }
+func (r alphabeticalEnumResult) Swap(i, j int)      { r[j], r[i] = r[i], r[j] }
 
 type EnumResultValue struct {
 	RawValue   int64
@@ -85,6 +111,35 @@ type EnumResultValue struct {
 type EnumReference struct {
 	From string
 	To   string
+}
+type alphabeticalEnumReferences []EnumReference
+
+func (r alphabeticalEnumReferences) Len() int      { return len(r) }
+func (r alphabeticalEnumReferences) Swap(i, j int) { r[j], r[i] = r[i], r[j] }
+func (r alphabeticalEnumReferences) Less(i, j int) bool {
+	fromVal := strings.Compare(r[i].From, r[j].From)
+	if fromVal != 0 {
+		return fromVal < 0
+	}
+
+	return strings.Compare(r[i].To, r[j].To) < 0
+}
+
+type MappedDefinition struct {
+	From string
+	To   string
+}
+type alphabeticalMappedDefinitions []MappedDefinition
+
+func (r alphabeticalMappedDefinitions) Len() int      { return len(r) }
+func (r alphabeticalMappedDefinitions) Swap(i, j int) { r[j], r[i] = r[i], r[j] }
+func (r alphabeticalMappedDefinitions) Less(i, j int) bool {
+	fromVal := strings.Compare(r[i].From, r[j].From)
+	if fromVal != 0 {
+		return fromVal < 0
+	}
+
+	return strings.Compare(r[i].To, r[j].To) < 0
 }
 
 func main() {
@@ -118,6 +173,9 @@ func main() {
 		return
 	}
 
+	// Sort the results to try and get a more deterministic output for version control
+	result.sortResults()
+
 	err = writeSwiftResult(result)
 	if err != nil {
 		fmt.Printf("Failed to write out Swift result: %s\n", err.Error())
@@ -125,6 +183,7 @@ func main() {
 	}
 
 	fmt.Printf("Finished with %d enums and %d enum references\n", len(result.Enums), len(result.EnumRefs))
+	fmt.Printf("Finished with %d mapped definitions\n", len(result.MappedDefinitions))
 
 	fmt.Println("Success")
 }
@@ -154,13 +213,20 @@ func transformSwaggerDefinitions(def *SwaggerDefinition) (*SwiftResult, error) {
 		} else if schema.isObject() {
 
 			for propName, property := range schema.Properties {
-				if property.isEnumReference() {
+				if property.isMappedDefinition() {
+					if !property.MappedDefinition.isDefinitionTable() {
+						panic(fmt.Sprintf("Found mapped definition that does not point to one of the definitions tables -- %s\n", property.MappedDefinition.Ref))
+					}
+					def := MappedDefinition{From: fmt.Sprintf("%s_%s", safeName(name), safeName(propName)), To: property.MappedDefinition.tableName()}
+					result.MappedDefinitions = append(result.MappedDefinitions, def)
+					fmt.Printf("Found top-level mapped definition From=%s To=%s\n", def.From, def.To)
+				} else if property.isEnumReference() {
 					if val, _ := schemaBlacklist[property.EnumRef.cleanupRef()]; val {
 						continue
 					}
 					ref := EnumReference{From: fmt.Sprintf("%s_%s", safeName(name), safeName(propName)), To: safeName(property.EnumRef.cleanupRef())}
 					result.EnumRefs = append(result.EnumRefs, ref)
-					fmt.Printf("Found top-level enum reference %s_%s -> %s\n", name, propName, property.EnumRef.cleanupRef())
+					//fmt.Printf("Found top-level enum reference %s_%s -> %s\n", name, propName, property.EnumRef.cleanupRef())
 				}
 			}
 		}
@@ -186,17 +252,31 @@ func safeName(name string) string {
 }
 
 func writeSwiftResult(result *SwiftResult) error {
-	tmpl, err := template.New("EnumDefinitions").ParseFiles("EnumDefinitions.tpl.swift")
+	err := writeTemplateWithName(result, "EnumDefinitions")
 	if err != nil {
 		return err
 	}
 
-	f, err := os.OpenFile("EnumDefinitions.swift", os.O_WRONLY|os.O_CREATE|os.O_TRUNC, 0644)
+	err = writeTemplateWithName(result, "MappedDefinitions")
 	if err != nil {
 		return err
 	}
 
-	err = tmpl.ExecuteTemplate(f, "EnumDefinitions.tpl.swift", result)
+	return nil
+}
+
+func writeTemplateWithName(result *SwiftResult, name string) error {
+	tmpl, err := template.New(name + ".tpl.swift").ParseFiles("templates/" + name + ".tpl.swift")
+	if err != nil {
+		return err
+	}
+
+	f, err := os.OpenFile(name+".swift", os.O_WRONLY|os.O_CREATE|os.O_TRUNC, 0644)
+	if err != nil {
+		return err
+	}
+
+	err = tmpl.ExecuteTemplate(f, name+".tpl.swift", result)
 	return err
 }
 
