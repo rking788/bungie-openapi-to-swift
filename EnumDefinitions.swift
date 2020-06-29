@@ -17,8 +17,8 @@ extension ApiDefinition {
             .Applications_ApplicationStatus(let val, let name),
             .Applications_DeveloperRole(let val, let name),
             .Applications_OAuthApplicationType(let val, let name),
+            .BungieCredentialType(let val, let name),
             .BungieMembershipType(let val, let name),
-            .Community_CommunityStatusSort(let val, let name),
             .Components_ComponentPrivacySetting(let val, let name),
             .Content_Models_ContentPropertyDataTypeEnum(let val, let name),
             .Destiny_ActivityGraphNodeHighlightType(let val, let name),
@@ -34,14 +34,18 @@ extension ApiDefinition {
             .Destiny_Definitions_DestinyTalentNodeStepImpactEffects(let val, let name),
             .Destiny_Definitions_DestinyTalentNodeStepLightAbilities(let val, let name),
             .Destiny_Definitions_DestinyTalentNodeStepWeaponPerformances(let val, let name),
+            .Destiny_Definitions_Milestones_DestinyMilestoneDisplayPreference(let val, let name),
             .Destiny_Definitions_Milestones_DestinyMilestoneType(let val, let name),
             .Destiny_DestinyActivityDifficultyTier(let val, let name),
             .Destiny_DestinyActivityModeCategory(let val, let name),
             .Destiny_DestinyActivityNavPointType(let val, let name),
             .Destiny_DestinyAmmunitionType(let val, let name),
+            .Destiny_DestinyBreakerType(let val, let name),
             .Destiny_DestinyClass(let val, let name),
             .Destiny_DestinyCollectibleState(let val, let name),
             .Destiny_DestinyComponentType(let val, let name),
+            .Destiny_DestinyEnergyType(let val, let name),
+            .Destiny_DestinyGamePrivacySetting(let val, let name),
             .Destiny_DestinyGameVersions(let val, let name),
             .Destiny_DestinyGatingScope(let val, let name),
             .Destiny_DestinyGender(let val, let name),
@@ -49,11 +53,15 @@ extension ApiDefinition {
             .Destiny_DestinyItemSortType(let val, let name),
             .Destiny_DestinyItemSubType(let val, let name),
             .Destiny_DestinyItemType(let val, let name),
+            .Destiny_DestinyJoinClosedReasons(let val, let name),
             .Destiny_DestinyObjectiveGrantStyle(let val, let name),
+            .Destiny_DestinyPartyMemberStates(let val, let name),
             .Destiny_DestinyPresentationDisplayStyle(let val, let name),
             .Destiny_DestinyPresentationNodeState(let val, let name),
             .Destiny_DestinyPresentationNodeType(let val, let name),
             .Destiny_DestinyPresentationScreenStyle(let val, let name),
+            .Destiny_DestinyProgressionRewardItemAcquisitionBehavior(let val, let name),
+            .Destiny_DestinyProgressionRewardItemState(let val, let name),
             .Destiny_DestinyProgressionScope(let val, let name),
             .Destiny_DestinyProgressionStepDisplayEffect(let val, let name),
             .Destiny_DestinyRace(let val, let name),
@@ -67,6 +75,7 @@ extension ApiDefinition {
             .Destiny_DestinyStatCategory(let val, let name),
             .Destiny_DestinyTalentNodeState(let val, let name),
             .Destiny_DestinyUnlockValueUIStyle(let val, let name),
+            .Destiny_DestinyVendorFilter(let val, let name),
             .Destiny_DestinyVendorInteractionRewardSelection(let val, let name),
             .Destiny_DestinyVendorItemRefundPolicy(let val, let name),
             .Destiny_DestinyVendorItemState(let val, let name),
@@ -94,7 +103,6 @@ extension ApiDefinition {
             .Destiny_VendorDisplayCategorySortOrder(let val, let name),
             .Destiny_VendorInteractionType(let val, let name),
             .Destiny_VendorItemStatus(let val, let name),
-            .Fireteam_FireteamActivityType(let val, let name),
             .Fireteam_FireteamDateRange(let val, let name),
             .Fireteam_FireteamPlatform(let val, let name),
             .Fireteam_FireteamPlatformInviteResult(let val, let name),
@@ -130,7 +138,6 @@ extension ApiDefinition {
             .GroupsV2_RuntimeGroupMemberType(let val, let name),
             .Ignores_IgnoreLength(let val, let name),
             .Ignores_IgnoreStatus(let val, let name),
-            .Partnerships_PartnershipType(let val, let name),
             .Trending_TrendingEntryType(let val, let name),
             .User_OptInFlags(let val, let name),
             :
@@ -143,7 +150,6 @@ let enumReferences: [String: EnumLookup] = [
     "Applications_ApplicationDeveloper_role": Applications_DeveloperRole_Lookup,
     "Applications_Application_applicationType": Applications_OAuthApplicationType_Lookup,
     "Applications_Application_status": Applications_ApplicationStatus_Lookup,
-    "Community_CommunityLiveStatus_partnershipType": Partnerships_PartnershipType_Lookup,
     "Components_ComponentResponse_privacy": Components_ComponentPrivacySetting_Lookup,
     "Content_Models_ContentTypeProperty_datatype": Content_Models_ContentPropertyDataTypeEnum_Lookup,
     "Destiny_Advanced_AwaAuthorizationResult_membershipType": BungieMembershipType_Lookup,
@@ -155,9 +161,14 @@ let enumReferences: [String: EnumLookup] = [
     "Destiny_Advanced_AwaUserResponse_selection": Destiny_Advanced_AwaUserSelection_Lookup,
     "Destiny_Components_Collectibles_DestinyCollectibleComponent_state": Destiny_DestinyCollectibleState_Lookup,
     "Destiny_Components_Presentation_DestinyPresentationNodeComponent_state": Destiny_DestinyPresentationNodeState_Lookup,
+    "Destiny_Components_Profiles_DestinyProfileTransitoryJoinability_closedReasons": Destiny_DestinyJoinClosedReasons_Lookup,
+    "Destiny_Components_Profiles_DestinyProfileTransitoryJoinability_privacySetting": Destiny_DestinyGamePrivacySetting_Lookup,
+    "Destiny_Components_Profiles_DestinyProfileTransitoryPartyMember_status": Destiny_DestinyPartyMemberStates_Lookup,
     "Destiny_Components_Records_DestinyRecordComponent_state": Destiny_DestinyRecordState_Lookup,
+    "Destiny_Definitions_BreakerTypes_DestinyBreakerTypeDefinition_enumValue": Destiny_DestinyBreakerType_Lookup,
     "Destiny_Definitions_Checklists_DestinyChecklistDefinition_scope": Destiny_DestinyScope_Lookup,
     "Destiny_Definitions_Checklists_DestinyChecklistEntryDefinition_scope": Destiny_DestinyScope_Lookup,
+    "Destiny_Definitions_Collectibles_DestinyCollectibleDefinition_presentationNodeType": Destiny_DestinyPresentationNodeType_Lookup,
     "Destiny_Definitions_Collectibles_DestinyCollectibleDefinition_scope": Destiny_DestinyScope_Lookup,
     "Destiny_Definitions_DestinyActivityModeDefinition_activityModeCategory": Destiny_DestinyActivityModeCategory_Lookup,
     "Destiny_Definitions_DestinyActivityModeDefinition_modeType": Destiny_HistoricalStats_Definitions_DestinyActivityModeType_Lookup,
@@ -170,11 +181,13 @@ let enumReferences: [String: EnumLookup] = [
     "Destiny_Definitions_DestinyInventoryBucketDefinition_category": Destiny_BucketCategory_Lookup,
     "Destiny_Definitions_DestinyInventoryBucketDefinition_location": Destiny_ItemLocation_Lookup,
     "Destiny_Definitions_DestinyInventoryBucketDefinition_scope": Destiny_BucketScope_Lookup,
+    "Destiny_Definitions_DestinyInventoryItemDefinition_breakerType": Destiny_DestinyBreakerType_Lookup,
     "Destiny_Definitions_DestinyInventoryItemDefinition_classType": Destiny_DestinyClass_Lookup,
     "Destiny_Definitions_DestinyInventoryItemDefinition_defaultDamageType": Destiny_DamageType_Lookup,
     "Destiny_Definitions_DestinyInventoryItemDefinition_itemSubType": Destiny_DestinyItemSubType_Lookup,
     "Destiny_Definitions_DestinyInventoryItemDefinition_itemType": Destiny_DestinyItemType_Lookup,
     "Destiny_Definitions_DestinyInventoryItemDefinition_specialItemType": Destiny_SpecialItemType_Lookup,
+    "Destiny_Definitions_DestinyItemCategoryDefinition_grantDestinyBreakerType": Destiny_DestinyBreakerType_Lookup,
     "Destiny_Definitions_DestinyItemCategoryDefinition_grantDestinyClass": Destiny_DestinyClass_Lookup,
     "Destiny_Definitions_DestinyItemCategoryDefinition_grantDestinyItemType": Destiny_DestinyItemType_Lookup,
     "Destiny_Definitions_DestinyItemCategoryDefinition_grantDestinySubType": Destiny_DestinyItemSubType_Lookup,
@@ -192,6 +205,7 @@ let enumReferences: [String: EnumLookup] = [
     "Destiny_Definitions_DestinyObjectivePerkEntryDefinition_style": Destiny_DestinyObjectiveGrantStyle_Lookup,
     "Destiny_Definitions_DestinyObjectiveStatEntryDefinition_style": Destiny_DestinyObjectiveGrantStyle_Lookup,
     "Destiny_Definitions_DestinyProgressionDefinition_scope": Destiny_DestinyProgressionScope_Lookup,
+    "Destiny_Definitions_DestinyProgressionRewardItemQuantity_acquisitionBehavior": Destiny_DestinyProgressionRewardItemAcquisitionBehavior_Lookup,
     "Destiny_Definitions_DestinyProgressionStepDefinition_displayEffectType": Destiny_DestinyProgressionStepDisplayEffect_Lookup,
     "Destiny_Definitions_DestinyRaceDefinition_raceType": Destiny_DestinyRace_Lookup,
     "Destiny_Definitions_DestinyRewardSourceDefinition_category": Destiny_Definitions_DestinyRewardSourceCategory_Lookup,
@@ -214,17 +228,25 @@ let enumReferences: [String: EnumLookup] = [
     "Destiny_Definitions_DestinyVendorItemDefinition_visibilityScope": Destiny_DestinyGatingScope_Lookup,
     "Destiny_Definitions_Director_DestinyActivityGraphNodeFeaturingStateDefinition_highlightType": Destiny_ActivityGraphNodeHighlightType_Lookup,
     "Destiny_Definitions_Director_DestinyActivityGraphNodeStateEntry_state": Destiny_DestinyGraphNodeState_Lookup,
+    "Destiny_Definitions_EnergyTypes_DestinyEnergyTypeDefinition_enumValue": Destiny_DestinyEnergyType_Lookup,
+    "Destiny_Definitions_Items_DestinyEnergyCapacityEntry_energyType": Destiny_DestinyEnergyType_Lookup,
+    "Destiny_Definitions_Items_DestinyEnergyCostEntry_energyType": Destiny_DestinyEnergyType_Lookup,
     "Destiny_Definitions_Items_DestinyItemPlugDefinition_alternatePlugStyle": Destiny_PlugUiStyles_Lookup,
     "Destiny_Definitions_Items_DestinyItemPlugDefinition_plugAvailability": Destiny_PlugAvailabilityMode_Lookup,
     "Destiny_Definitions_Items_DestinyItemPlugDefinition_plugStyle": Destiny_PlugUiStyles_Lookup,
+    "Destiny_Definitions_Metrics_DestinyMetricDefinition_presentationNodeType": Destiny_DestinyPresentationNodeType_Lookup,
+    "Destiny_Definitions_Milestones_DestinyMilestoneDefinition_displayPreference": Destiny_Definitions_Milestones_DestinyMilestoneDisplayPreference_Lookup,
     "Destiny_Definitions_Milestones_DestinyMilestoneDefinition_milestoneType": Destiny_Definitions_Milestones_DestinyMilestoneType_Lookup,
     "Destiny_Definitions_Presentation_DestinyPresentationChildBlock_displayStyle": Destiny_DestinyPresentationDisplayStyle_Lookup,
     "Destiny_Definitions_Presentation_DestinyPresentationChildBlock_presentationNodeType": Destiny_DestinyPresentationNodeType_Lookup,
+    "Destiny_Definitions_Presentation_DestinyPresentationNodeBaseDefinition_presentationNodeType": Destiny_DestinyPresentationNodeType_Lookup,
     "Destiny_Definitions_Presentation_DestinyPresentationNodeDefinition_displayStyle": Destiny_DestinyPresentationDisplayStyle_Lookup,
     "Destiny_Definitions_Presentation_DestinyPresentationNodeDefinition_nodeType": Destiny_DestinyPresentationNodeType_Lookup,
+    "Destiny_Definitions_Presentation_DestinyPresentationNodeDefinition_presentationNodeType": Destiny_DestinyPresentationNodeType_Lookup,
     "Destiny_Definitions_Presentation_DestinyPresentationNodeDefinition_scope": Destiny_DestinyScope_Lookup,
     "Destiny_Definitions_Presentation_DestinyPresentationNodeDefinition_screenStyle": Destiny_DestinyPresentationScreenStyle_Lookup,
     "Destiny_Definitions_Records_DestinyRecordCompletionBlock_toastStyle": Destiny_DestinyRecordToastStyle_Lookup,
+    "Destiny_Definitions_Records_DestinyRecordDefinition_presentationNodeType": Destiny_DestinyPresentationNodeType_Lookup,
     "Destiny_Definitions_Records_DestinyRecordDefinition_recordValueStyle": Destiny_DestinyRecordValueStyle_Lookup,
     "Destiny_Definitions_Records_DestinyRecordDefinition_scope": Destiny_DestinyScope_Lookup,
     "Destiny_Definitions_Sockets_DestinyInsertPlugActionDefinition_actionType": Destiny_SocketTypeActionType_Lookup,
@@ -242,6 +264,7 @@ let enumReferences: [String: EnumLookup] = [
     "Destiny_Entities_Items_DestinyItemComponent_transferStatus": Destiny_TransferStatuses_Lookup,
     "Destiny_Entities_Items_DestinyItemInstanceComponent_cannotEquipReason": Destiny_EquipFailureReason_Lookup,
     "Destiny_Entities_Items_DestinyItemInstanceComponent_damageType": Destiny_DamageType_Lookup,
+    "Destiny_Entities_Items_DestinyItemInstanceEnergy_energyType": Destiny_DestinyEnergyType_Lookup,
     "Destiny_Entities_Profiles_DestinyProfileComponent_versionsOwned": Destiny_DestinyGameVersions_Lookup,
     "Destiny_Entities_Vendors_DestinyVendorSaleItemComponent_augments": Destiny_DestinyVendorItemState_Lookup,
     "Destiny_Entities_Vendors_DestinyVendorSaleItemComponent_saleStatus": Destiny_VendorItemStatus_Lookup,
@@ -260,12 +283,15 @@ let enumReferences: [String: EnumLookup] = [
     "Destiny_Requests_Actions_DestinyItemStateRequest_membershipType": BungieMembershipType_Lookup,
     "Destiny_Requests_Actions_DestinyPostmasterTransferRequest_membershipType": BungieMembershipType_Lookup,
     "Destiny_Requests_DestinyItemTransferRequest_membershipType": BungieMembershipType_Lookup,
+    "Destiny_Responses_DestinyProfileUserInfoCard_crossSaveOverride": BungieMembershipType_Lookup,
     "Destiny_Responses_DestinyProfileUserInfoCard_membershipType": BungieMembershipType_Lookup,
     "Destiny_Vendors_DestinyVendorReceipt_refundPolicy": Destiny_DestinyVendorItemRefundPolicy_Lookup,
     "DictionaryComponentResponseOfint32AndDestinyItemInstanceComponent_privacy": Components_ComponentPrivacySetting_Lookup,
     "DictionaryComponentResponseOfint32AndDestinyItemObjectivesComponent_privacy": Components_ComponentPrivacySetting_Lookup,
     "DictionaryComponentResponseOfint32AndDestinyItemPerksComponent_privacy": Components_ComponentPrivacySetting_Lookup,
+    "DictionaryComponentResponseOfint32AndDestinyItemPlugObjectivesComponent_privacy": Components_ComponentPrivacySetting_Lookup,
     "DictionaryComponentResponseOfint32AndDestinyItemRenderComponent_privacy": Components_ComponentPrivacySetting_Lookup,
+    "DictionaryComponentResponseOfint32AndDestinyItemReusablePlugsComponent_privacy": Components_ComponentPrivacySetting_Lookup,
     "DictionaryComponentResponseOfint32AndDestinyItemSocketsComponent_privacy": Components_ComponentPrivacySetting_Lookup,
     "DictionaryComponentResponseOfint32AndDestinyItemStatsComponent_privacy": Components_ComponentPrivacySetting_Lookup,
     "DictionaryComponentResponseOfint32AndDestinyItemTalentGridComponent_privacy": Components_ComponentPrivacySetting_Lookup,
@@ -281,7 +307,9 @@ let enumReferences: [String: EnumLookup] = [
     "DictionaryComponentResponseOfint64AndDestinyItemInstanceComponent_privacy": Components_ComponentPrivacySetting_Lookup,
     "DictionaryComponentResponseOfint64AndDestinyItemObjectivesComponent_privacy": Components_ComponentPrivacySetting_Lookup,
     "DictionaryComponentResponseOfint64AndDestinyItemPerksComponent_privacy": Components_ComponentPrivacySetting_Lookup,
+    "DictionaryComponentResponseOfint64AndDestinyItemPlugObjectivesComponent_privacy": Components_ComponentPrivacySetting_Lookup,
     "DictionaryComponentResponseOfint64AndDestinyItemRenderComponent_privacy": Components_ComponentPrivacySetting_Lookup,
+    "DictionaryComponentResponseOfint64AndDestinyItemReusablePlugsComponent_privacy": Components_ComponentPrivacySetting_Lookup,
     "DictionaryComponentResponseOfint64AndDestinyItemSocketsComponent_privacy": Components_ComponentPrivacySetting_Lookup,
     "DictionaryComponentResponseOfint64AndDestinyItemStatsComponent_privacy": Components_ComponentPrivacySetting_Lookup,
     "DictionaryComponentResponseOfint64AndDestinyItemTalentGridComponent_privacy": Components_ComponentPrivacySetting_Lookup,
@@ -292,7 +320,9 @@ let enumReferences: [String: EnumLookup] = [
     "DictionaryComponentResponseOfuint32AndDestinyItemObjectivesComponent_privacy": Components_ComponentPrivacySetting_Lookup,
     "DictionaryComponentResponseOfuint32AndDestinyItemPerksComponent_privacy": Components_ComponentPrivacySetting_Lookup,
     "DictionaryComponentResponseOfuint32AndDestinyItemPlugComponent_privacy": Components_ComponentPrivacySetting_Lookup,
+    "DictionaryComponentResponseOfuint32AndDestinyItemPlugObjectivesComponent_privacy": Components_ComponentPrivacySetting_Lookup,
     "DictionaryComponentResponseOfuint32AndDestinyItemRenderComponent_privacy": Components_ComponentPrivacySetting_Lookup,
+    "DictionaryComponentResponseOfuint32AndDestinyItemReusablePlugsComponent_privacy": Components_ComponentPrivacySetting_Lookup,
     "DictionaryComponentResponseOfuint32AndDestinyItemSocketsComponent_privacy": Components_ComponentPrivacySetting_Lookup,
     "DictionaryComponentResponseOfuint32AndDestinyItemStatsComponent_privacy": Components_ComponentPrivacySetting_Lookup,
     "DictionaryComponentResponseOfuint32AndDestinyItemTalentGridComponent_privacy": Components_ComponentPrivacySetting_Lookup,
@@ -302,8 +332,10 @@ let enumReferences: [String: EnumLookup] = [
     "DictionaryComponentResponseOfuint32AndPersonalDestinyVendorSaleItemSetComponent_privacy": Components_ComponentPrivacySetting_Lookup,
     "DictionaryComponentResponseOfuint32AndPublicDestinyVendorSaleItemSetComponent_privacy": Components_ComponentPrivacySetting_Lookup,
     "Fireteam_FireteamMember_lastPlatformInviteAttemptResult": Fireteam_FireteamPlatformInviteResult_Lookup,
-    "Fireteam_FireteamSummary_activityType": Fireteam_FireteamActivityType_Lookup,
     "Fireteam_FireteamSummary_platform": Fireteam_FireteamPlatform_Lookup,
+    "Fireteam_FireteamUserInfoCard_FireteamMembershipType": BungieMembershipType_Lookup,
+    "Fireteam_FireteamUserInfoCard_crossSaveOverride": BungieMembershipType_Lookup,
+    "Fireteam_FireteamUserInfoCard_membershipType": BungieMembershipType_Lookup,
     "Forum_ForumRecruitmentDetail_intensity": Forum_ForumRecruitmentIntensityLabel_Lookup,
     "Forum_ForumRecruitmentDetail_tone": Forum_ForumRecruitmentToneLabel_Lookup,
     "Forum_PostResponse_popularity": Forum_ForumPostPopularity_Lookup,
@@ -325,6 +357,9 @@ let enumReferences: [String: EnumLookup] = [
     "GroupsV2_GroupQuery_groupType": GroupsV2_GroupType_Lookup,
     "GroupsV2_GroupQuery_sortBy": GroupsV2_GroupSortBy_Lookup,
     "GroupsV2_GroupResponse_allianceStatus": GroupsV2_GroupAllianceStatus_Lookup,
+    "GroupsV2_GroupUserInfoCard_LastSeenDisplayNameType": BungieMembershipType_Lookup,
+    "GroupsV2_GroupUserInfoCard_crossSaveOverride": BungieMembershipType_Lookup,
+    "GroupsV2_GroupUserInfoCard_membershipType": BungieMembershipType_Lookup,
     "GroupsV2_GroupV2Card_capabilities": GroupsV2_Capabilities_Lookup,
     "GroupsV2_GroupV2Card_groupType": GroupsV2_GroupType_Lookup,
     "GroupsV2_GroupV2Card_membershipOption": GroupsV2_MembershipOption_Lookup,
@@ -334,7 +369,6 @@ let enumReferences: [String: EnumLookup] = [
     "GroupsV2_GroupV2_homepage": GroupsV2_GroupHomepage_Lookup,
     "GroupsV2_GroupV2_membershipOption": GroupsV2_MembershipOption_Lookup,
     "Ignores_IgnoreResponse_ignoreFlags": Ignores_IgnoreStatus_Lookup,
-    "Partnerships_PublicPartnershipDetail_partnerType": Partnerships_PartnershipType_Lookup,
     "SingleComponentResponseOfDestinyCharacterActivitiesComponent_privacy": Components_ComponentPrivacySetting_Lookup,
     "SingleComponentResponseOfDestinyCharacterComponent_privacy": Components_ComponentPrivacySetting_Lookup,
     "SingleComponentResponseOfDestinyCharacterProgressionComponent_privacy": Components_ComponentPrivacySetting_Lookup,
@@ -347,11 +381,14 @@ let enumReferences: [String: EnumLookup] = [
     "SingleComponentResponseOfDestinyItemInstanceComponent_privacy": Components_ComponentPrivacySetting_Lookup,
     "SingleComponentResponseOfDestinyItemObjectivesComponent_privacy": Components_ComponentPrivacySetting_Lookup,
     "SingleComponentResponseOfDestinyItemPerksComponent_privacy": Components_ComponentPrivacySetting_Lookup,
+    "SingleComponentResponseOfDestinyItemPlugObjectivesComponent_privacy": Components_ComponentPrivacySetting_Lookup,
     "SingleComponentResponseOfDestinyItemRenderComponent_privacy": Components_ComponentPrivacySetting_Lookup,
+    "SingleComponentResponseOfDestinyItemReusablePlugsComponent_privacy": Components_ComponentPrivacySetting_Lookup,
     "SingleComponentResponseOfDestinyItemSocketsComponent_privacy": Components_ComponentPrivacySetting_Lookup,
     "SingleComponentResponseOfDestinyItemStatsComponent_privacy": Components_ComponentPrivacySetting_Lookup,
     "SingleComponentResponseOfDestinyItemTalentGridComponent_privacy": Components_ComponentPrivacySetting_Lookup,
     "SingleComponentResponseOfDestinyKiosksComponent_privacy": Components_ComponentPrivacySetting_Lookup,
+    "SingleComponentResponseOfDestinyMetricsComponent_privacy": Components_ComponentPrivacySetting_Lookup,
     "SingleComponentResponseOfDestinyPlatformSilverComponent_privacy": Components_ComponentPrivacySetting_Lookup,
     "SingleComponentResponseOfDestinyPlugSetsComponent_privacy": Components_ComponentPrivacySetting_Lookup,
     "SingleComponentResponseOfDestinyPresentationNodesComponent_privacy": Components_ComponentPrivacySetting_Lookup,
@@ -359,15 +396,20 @@ let enumReferences: [String: EnumLookup] = [
     "SingleComponentResponseOfDestinyProfileComponent_privacy": Components_ComponentPrivacySetting_Lookup,
     "SingleComponentResponseOfDestinyProfileProgressionComponent_privacy": Components_ComponentPrivacySetting_Lookup,
     "SingleComponentResponseOfDestinyProfileRecordsComponent_privacy": Components_ComponentPrivacySetting_Lookup,
+    "SingleComponentResponseOfDestinyProfileTransitoryComponent_privacy": Components_ComponentPrivacySetting_Lookup,
     "SingleComponentResponseOfDestinyVendorCategoriesComponent_privacy": Components_ComponentPrivacySetting_Lookup,
     "SingleComponentResponseOfDestinyVendorComponent_privacy": Components_ComponentPrivacySetting_Lookup,
     "SingleComponentResponseOfDestinyVendorGroupComponent_privacy": Components_ComponentPrivacySetting_Lookup,
     "SingleComponentResponseOfDestinyVendorReceiptsComponent_privacy": Components_ComponentPrivacySetting_Lookup,
     "Trending_TrendingDetail_entityType": Trending_TrendingEntryType_Lookup,
-    "Trending_TrendingEntryCommunityStream_partnershipType": Partnerships_PartnershipType_Lookup,
     "Trending_TrendingEntry_entityType": Trending_TrendingEntryType_Lookup,
+    "User_CrossSaveUserMembership_crossSaveOverride": BungieMembershipType_Lookup,
+    "User_CrossSaveUserMembership_membershipType": BungieMembershipType_Lookup,
     "User_EmailOptInDefinition_value": User_OptInFlags_Lookup,
     "User_EmailViewDefinitionSetting_optInAggregateValue": User_OptInFlags_Lookup,
+    "User_HardLinkedUserMembership_CrossSaveOverriddenType": BungieMembershipType_Lookup,
+    "User_HardLinkedUserMembership_membershipType": BungieMembershipType_Lookup,
+    "User_UserInfoCard_crossSaveOverride": BungieMembershipType_Lookup,
     "User_UserInfoCard_membershipType": BungieMembershipType_Lookup,
     "User_UserMembership_membershipType": BungieMembershipType_Lookup,
 ]
@@ -378,8 +420,8 @@ enum ApiDefinition {
     case Applications_ApplicationStatus(Int, String)
     case Applications_DeveloperRole(Int, String)
     case Applications_OAuthApplicationType(Int, String)
+    case BungieCredentialType(Int, String)
     case BungieMembershipType(Int, String)
-    case Community_CommunityStatusSort(Int, String)
     case Components_ComponentPrivacySetting(Int, String)
     case Content_Models_ContentPropertyDataTypeEnum(Int, String)
     case Destiny_ActivityGraphNodeHighlightType(Int, String)
@@ -395,14 +437,18 @@ enum ApiDefinition {
     case Destiny_Definitions_DestinyTalentNodeStepImpactEffects(Int, String)
     case Destiny_Definitions_DestinyTalentNodeStepLightAbilities(Int, String)
     case Destiny_Definitions_DestinyTalentNodeStepWeaponPerformances(Int, String)
+    case Destiny_Definitions_Milestones_DestinyMilestoneDisplayPreference(Int, String)
     case Destiny_Definitions_Milestones_DestinyMilestoneType(Int, String)
     case Destiny_DestinyActivityDifficultyTier(Int, String)
     case Destiny_DestinyActivityModeCategory(Int, String)
     case Destiny_DestinyActivityNavPointType(Int, String)
     case Destiny_DestinyAmmunitionType(Int, String)
+    case Destiny_DestinyBreakerType(Int, String)
     case Destiny_DestinyClass(Int, String)
     case Destiny_DestinyCollectibleState(Int, String)
     case Destiny_DestinyComponentType(Int, String)
+    case Destiny_DestinyEnergyType(Int, String)
+    case Destiny_DestinyGamePrivacySetting(Int, String)
     case Destiny_DestinyGameVersions(Int, String)
     case Destiny_DestinyGatingScope(Int, String)
     case Destiny_DestinyGender(Int, String)
@@ -410,11 +456,15 @@ enum ApiDefinition {
     case Destiny_DestinyItemSortType(Int, String)
     case Destiny_DestinyItemSubType(Int, String)
     case Destiny_DestinyItemType(Int, String)
+    case Destiny_DestinyJoinClosedReasons(Int, String)
     case Destiny_DestinyObjectiveGrantStyle(Int, String)
+    case Destiny_DestinyPartyMemberStates(Int, String)
     case Destiny_DestinyPresentationDisplayStyle(Int, String)
     case Destiny_DestinyPresentationNodeState(Int, String)
     case Destiny_DestinyPresentationNodeType(Int, String)
     case Destiny_DestinyPresentationScreenStyle(Int, String)
+    case Destiny_DestinyProgressionRewardItemAcquisitionBehavior(Int, String)
+    case Destiny_DestinyProgressionRewardItemState(Int, String)
     case Destiny_DestinyProgressionScope(Int, String)
     case Destiny_DestinyProgressionStepDisplayEffect(Int, String)
     case Destiny_DestinyRace(Int, String)
@@ -428,6 +478,7 @@ enum ApiDefinition {
     case Destiny_DestinyStatCategory(Int, String)
     case Destiny_DestinyTalentNodeState(Int, String)
     case Destiny_DestinyUnlockValueUIStyle(Int, String)
+    case Destiny_DestinyVendorFilter(Int, String)
     case Destiny_DestinyVendorInteractionRewardSelection(Int, String)
     case Destiny_DestinyVendorItemRefundPolicy(Int, String)
     case Destiny_DestinyVendorItemState(Int, String)
@@ -455,7 +506,6 @@ enum ApiDefinition {
     case Destiny_VendorDisplayCategorySortOrder(Int, String)
     case Destiny_VendorInteractionType(Int, String)
     case Destiny_VendorItemStatus(Int, String)
-    case Fireteam_FireteamActivityType(Int, String)
     case Fireteam_FireteamDateRange(Int, String)
     case Fireteam_FireteamPlatform(Int, String)
     case Fireteam_FireteamPlatformInviteResult(Int, String)
@@ -491,7 +541,6 @@ enum ApiDefinition {
     case GroupsV2_RuntimeGroupMemberType(Int, String)
     case Ignores_IgnoreLength(Int, String)
     case Ignores_IgnoreStatus(Int, String)
-    case Partnerships_PartnershipType(Int, String)
     case Trending_TrendingEntryType(Int, String)
     case User_OptInFlags(Int, String)
 
@@ -510,6 +559,7 @@ let Applications_ApplicationScopes_Lookup: EnumLookup = [
    "512": .Applications_ApplicationScopes(512, "ReadDestinyVendorsAndAdvisors"),
    "1024": .Applications_ApplicationScopes(1024, "ReadAndApplyTokens"),
    "2048": .Applications_ApplicationScopes(2048, "AdvancedWriteActions"),
+   "4096": .Applications_ApplicationScopes(4096, "PartnerOfferGrant"),
 ]
 
 let Applications_ApplicationStatus_Lookup: EnumLookup = [
@@ -532,6 +582,22 @@ let Applications_OAuthApplicationType_Lookup: EnumLookup = [
    "2": .Applications_OAuthApplicationType(2, "Public"),
 ]
 
+let BungieCredentialType_Lookup: EnumLookup = [
+   "0": .BungieCredentialType(0, "None"),
+   "1": .BungieCredentialType(1, "Xuid"),
+   "2": .BungieCredentialType(2, "Psnid"),
+   "3": .BungieCredentialType(3, "Wlid"),
+   "4": .BungieCredentialType(4, "Fake"),
+   "5": .BungieCredentialType(5, "Facebook"),
+   "8": .BungieCredentialType(8, "Google"),
+   "9": .BungieCredentialType(9, "Windows"),
+   "10": .BungieCredentialType(10, "DemonId"),
+   "12": .BungieCredentialType(12, "SteamId"),
+   "14": .BungieCredentialType(14, "BattleNetId"),
+   "16": .BungieCredentialType(16, "StadiaId"),
+   "18": .BungieCredentialType(18, "TwitchId"),
+]
+
 let BungieMembershipType_Lookup: EnumLookup = [
    "0": .BungieMembershipType(0, "None"),
    "1": .BungieMembershipType(1, "TigerXbox"),
@@ -542,13 +608,6 @@ let BungieMembershipType_Lookup: EnumLookup = [
    "10": .BungieMembershipType(10, "TigerDemon"),
    "254": .BungieMembershipType(254, "BungieNext"),
    "-1": .BungieMembershipType(-1, "All"),
-]
-
-let Community_CommunityStatusSort_Lookup: EnumLookup = [
-   "0": .Community_CommunityStatusSort(0, "Viewers"),
-   "1": .Community_CommunityStatusSort(1, "Trending"),
-   "2": .Community_CommunityStatusSort(2, "OverallViewers"),
-   "3": .Community_CommunityStatusSort(3, "Followers"),
 ]
 
 let Components_ComponentPrivacySetting_Lookup: EnumLookup = [
@@ -692,6 +751,12 @@ let Destiny_Definitions_DestinyTalentNodeStepWeaponPerformances_Lookup: EnumLook
    "8191": .Destiny_Definitions_DestinyTalentNodeStepWeaponPerformances(8191, "All"),
 ]
 
+let Destiny_Definitions_Milestones_DestinyMilestoneDisplayPreference_Lookup: EnumLookup = [
+   "0": .Destiny_Definitions_Milestones_DestinyMilestoneDisplayPreference(0, "MilestoneDefinition"),
+   "1": .Destiny_Definitions_Milestones_DestinyMilestoneDisplayPreference(1, "CurrentQuestSteps"),
+   "2": .Destiny_Definitions_Milestones_DestinyMilestoneDisplayPreference(2, "CurrentActivityChallenges"),
+]
+
 let Destiny_Definitions_Milestones_DestinyMilestoneType_Lookup: EnumLookup = [
    "0": .Destiny_Definitions_Milestones_DestinyMilestoneType(0, "Unknown"),
    "1": .Destiny_Definitions_Milestones_DestinyMilestoneType(1, "Tutorial"),
@@ -747,6 +812,13 @@ let Destiny_DestinyAmmunitionType_Lookup: EnumLookup = [
    "4": .Destiny_DestinyAmmunitionType(4, "Unknown"),
 ]
 
+let Destiny_DestinyBreakerType_Lookup: EnumLookup = [
+   "0": .Destiny_DestinyBreakerType(0, "None"),
+   "1": .Destiny_DestinyBreakerType(1, "ShieldPiercing"),
+   "2": .Destiny_DestinyBreakerType(2, "Disruption"),
+   "3": .Destiny_DestinyBreakerType(3, "Stagger"),
+]
+
 let Destiny_DestinyClass_Lookup: EnumLookup = [
    "0": .Destiny_DestinyClass(0, "Titan"),
    "1": .Destiny_DestinyClass(1, "Hunter"),
@@ -788,6 +860,8 @@ let Destiny_DestinyComponentType_Lookup: EnumLookup = [
    "306": .Destiny_DestinyComponentType(306, "ItemTalentGrids"),
    "307": .Destiny_DestinyComponentType(307, "ItemCommonData"),
    "308": .Destiny_DestinyComponentType(308, "ItemPlugStates"),
+   "309": .Destiny_DestinyComponentType(309, "ItemPlugObjectives"),
+   "310": .Destiny_DestinyComponentType(310, "ItemReusablePlugs"),
    "400": .Destiny_DestinyComponentType(400, "Vendors"),
    "401": .Destiny_DestinyComponentType(401, "VendorCategories"),
    "402": .Destiny_DestinyComponentType(402, "VendorSales"),
@@ -796,6 +870,23 @@ let Destiny_DestinyComponentType_Lookup: EnumLookup = [
    "700": .Destiny_DestinyComponentType(700, "PresentationNodes"),
    "800": .Destiny_DestinyComponentType(800, "Collectibles"),
    "900": .Destiny_DestinyComponentType(900, "Records"),
+   "1000": .Destiny_DestinyComponentType(1000, "Transitory"),
+   "1100": .Destiny_DestinyComponentType(1100, "Metrics"),
+]
+
+let Destiny_DestinyEnergyType_Lookup: EnumLookup = [
+   "0": .Destiny_DestinyEnergyType(0, "Any"),
+   "1": .Destiny_DestinyEnergyType(1, "Arc"),
+   "2": .Destiny_DestinyEnergyType(2, "Thermal"),
+   "3": .Destiny_DestinyEnergyType(3, "Void"),
+]
+
+let Destiny_DestinyGamePrivacySetting_Lookup: EnumLookup = [
+   "0": .Destiny_DestinyGamePrivacySetting(0, "Open"),
+   "1": .Destiny_DestinyGamePrivacySetting(1, "ClanAndFriendsOnly"),
+   "2": .Destiny_DestinyGamePrivacySetting(2, "FriendsOnly"),
+   "3": .Destiny_DestinyGamePrivacySetting(3, "InvitationOnly"),
+   "4": .Destiny_DestinyGamePrivacySetting(4, "Closed"),
 ]
 
 let Destiny_DestinyGameVersions_Lookup: EnumLookup = [
@@ -896,12 +987,32 @@ let Destiny_DestinyItemType_Lookup: EnumLookup = [
    "25": .Destiny_DestinyItemType(25, "Package"),
    "26": .Destiny_DestinyItemType(26, "Bounty"),
    "27": .Destiny_DestinyItemType(27, "Wrapper"),
+   "28": .Destiny_DestinyItemType(28, "SeasonalArtifact"),
+   "29": .Destiny_DestinyItemType(29, "Finisher"),
+]
+
+let Destiny_DestinyJoinClosedReasons_Lookup: EnumLookup = [
+   "0": .Destiny_DestinyJoinClosedReasons(0, "None"),
+   "1": .Destiny_DestinyJoinClosedReasons(1, "InMatchmaking"),
+   "2": .Destiny_DestinyJoinClosedReasons(2, "Loading"),
+   "4": .Destiny_DestinyJoinClosedReasons(4, "SoloMode"),
+   "8": .Destiny_DestinyJoinClosedReasons(8, "InternalReasons"),
+   "16": .Destiny_DestinyJoinClosedReasons(16, "DisallowedByGameState"),
+   "32768": .Destiny_DestinyJoinClosedReasons(32768, "Offline"),
 ]
 
 let Destiny_DestinyObjectiveGrantStyle_Lookup: EnumLookup = [
    "0": .Destiny_DestinyObjectiveGrantStyle(0, "WhenIncomplete"),
    "1": .Destiny_DestinyObjectiveGrantStyle(1, "WhenComplete"),
    "2": .Destiny_DestinyObjectiveGrantStyle(2, "Always"),
+]
+
+let Destiny_DestinyPartyMemberStates_Lookup: EnumLookup = [
+   "0": .Destiny_DestinyPartyMemberStates(0, "None"),
+   "1": .Destiny_DestinyPartyMemberStates(1, "FireteamMember"),
+   "2": .Destiny_DestinyPartyMemberStates(2, "PosseMember"),
+   "4": .Destiny_DestinyPartyMemberStates(4, "GroupMember"),
+   "8": .Destiny_DestinyPartyMemberStates(8, "PartyLeader"),
 ]
 
 let Destiny_DestinyPresentationDisplayStyle_Lookup: EnumLookup = [
@@ -923,12 +1034,26 @@ let Destiny_DestinyPresentationNodeType_Lookup: EnumLookup = [
    "1": .Destiny_DestinyPresentationNodeType(1, "Category"),
    "2": .Destiny_DestinyPresentationNodeType(2, "Collectibles"),
    "3": .Destiny_DestinyPresentationNodeType(3, "Records"),
+   "4": .Destiny_DestinyPresentationNodeType(4, "Metric"),
 ]
 
 let Destiny_DestinyPresentationScreenStyle_Lookup: EnumLookup = [
    "0": .Destiny_DestinyPresentationScreenStyle(0, "Default"),
    "1": .Destiny_DestinyPresentationScreenStyle(1, "CategorySets"),
    "2": .Destiny_DestinyPresentationScreenStyle(2, "Badge"),
+]
+
+let Destiny_DestinyProgressionRewardItemAcquisitionBehavior_Lookup: EnumLookup = [
+   "0": .Destiny_DestinyProgressionRewardItemAcquisitionBehavior(0, "Instant"),
+   "1": .Destiny_DestinyProgressionRewardItemAcquisitionBehavior(1, "PlayerClaimRequired"),
+]
+
+let Destiny_DestinyProgressionRewardItemState_Lookup: EnumLookup = [
+   "0": .Destiny_DestinyProgressionRewardItemState(0, "None"),
+   "1": .Destiny_DestinyProgressionRewardItemState(1, "Invisible"),
+   "2": .Destiny_DestinyProgressionRewardItemState(2, "Earned"),
+   "4": .Destiny_DestinyProgressionRewardItemState(4, "Claimed"),
+   "8": .Destiny_DestinyProgressionRewardItemState(8, "ClaimAllowed"),
 ]
 
 let Destiny_DestinyProgressionScope_Lookup: EnumLookup = [
@@ -995,6 +1120,8 @@ let Destiny_DestinySocketCategoryStyle_Lookup: EnumLookup = [
    "2": .Destiny_DestinySocketCategoryStyle(2, "Consumable"),
    "3": .Destiny_DestinySocketCategoryStyle(3, "Unlockable"),
    "4": .Destiny_DestinySocketCategoryStyle(4, "Intrinsic"),
+   "5": .Destiny_DestinySocketCategoryStyle(5, "EnergyMeter"),
+   "6": .Destiny_DestinySocketCategoryStyle(6, "LargePerk"),
 ]
 
 let Destiny_DestinySocketVisibility_Lookup: EnumLookup = [
@@ -1045,6 +1172,14 @@ let Destiny_DestinyUnlockValueUIStyle_Lookup: EnumLookup = [
    "7": .Destiny_DestinyUnlockValueUIStyle(7, "TimeDuration"),
    "8": .Destiny_DestinyUnlockValueUIStyle(8, "Hidden"),
    "9": .Destiny_DestinyUnlockValueUIStyle(9, "Multiplier"),
+   "10": .Destiny_DestinyUnlockValueUIStyle(10, "GreenPips"),
+   "11": .Destiny_DestinyUnlockValueUIStyle(11, "RedPips"),
+   "12": .Destiny_DestinyUnlockValueUIStyle(12, "ExplicitPercentage"),
+   "13": .Destiny_DestinyUnlockValueUIStyle(13, "RawFloat"),
+]
+
+let Destiny_DestinyVendorFilter_Lookup: EnumLookup = [
+   "0": .Destiny_DestinyVendorFilter(0, "None"),
 ]
 
 let Destiny_DestinyVendorInteractionRewardSelection_Lookup: EnumLookup = [
@@ -1071,6 +1206,10 @@ let Destiny_DestinyVendorItemState_Lookup: EnumLookup = [
    "128": .Destiny_DestinyVendorItemState(128, "Owned"),
    "256": .Destiny_DestinyVendorItemState(256, "WideView"),
    "512": .Destiny_DestinyVendorItemState(512, "NexusAttention"),
+   "1024": .Destiny_DestinyVendorItemState(1024, "SetDiscount"),
+   "2048": .Destiny_DestinyVendorItemState(2048, "PriceDrop"),
+   "4096": .Destiny_DestinyVendorItemState(4096, "DailyOffer"),
+   "8192": .Destiny_DestinyVendorItemState(8192, "Charity"),
 ]
 
 let Destiny_DestinyVendorReplyType_Lookup: EnumLookup = [
@@ -1164,6 +1303,13 @@ let Destiny_HistoricalStats_Definitions_DestinyActivityModeType_Lookup: EnumLook
    "75": .Destiny_HistoricalStats_Definitions_DestinyActivityModeType(75, "GambitPrime"),
    "76": .Destiny_HistoricalStats_Definitions_DestinyActivityModeType(76, "Reckoning"),
    "77": .Destiny_HistoricalStats_Definitions_DestinyActivityModeType(77, "Menagerie"),
+   "78": .Destiny_HistoricalStats_Definitions_DestinyActivityModeType(78, "VexOffensive"),
+   "79": .Destiny_HistoricalStats_Definitions_DestinyActivityModeType(79, "NightmareHunt"),
+   "80": .Destiny_HistoricalStats_Definitions_DestinyActivityModeType(80, "Elimination"),
+   "81": .Destiny_HistoricalStats_Definitions_DestinyActivityModeType(81, "Momentum"),
+   "82": .Destiny_HistoricalStats_Definitions_DestinyActivityModeType(82, "Dungeon"),
+   "83": .Destiny_HistoricalStats_Definitions_DestinyActivityModeType(83, "Sundial"),
+   "84": .Destiny_HistoricalStats_Definitions_DestinyActivityModeType(84, "TrialsOfOsiris"),
 ]
 
 let Destiny_HistoricalStats_Definitions_DestinyStatsCategoryType_Lookup: EnumLookup = [
@@ -1351,21 +1497,6 @@ let Destiny_VendorItemStatus_Lookup: EnumLookup = [
    "8192": .Destiny_VendorItemStatus(8192, "DisplayOnly"),
 ]
 
-let Fireteam_FireteamActivityType_Lookup: EnumLookup = [
-   "0": .Fireteam_FireteamActivityType(0, "All"),
-   "1": .Fireteam_FireteamActivityType(1, "Raid"),
-   "2": .Fireteam_FireteamActivityType(2, "Crucible"),
-   "3": .Fireteam_FireteamActivityType(3, "Trials"),
-   "4": .Fireteam_FireteamActivityType(4, "Nightfall"),
-   "5": .Fireteam_FireteamActivityType(5, "Anything"),
-   "6": .Fireteam_FireteamActivityType(6, "Gambit"),
-   "7": .Fireteam_FireteamActivityType(7, "BlindWell"),
-   "8": .Fireteam_FireteamActivityType(8, "EscalationProtocol"),
-   "9": .Fireteam_FireteamActivityType(9, "Forge"),
-   "10": .Fireteam_FireteamActivityType(10, "Reckoning"),
-   "11": .Fireteam_FireteamActivityType(11, "Menagerie"),
-]
-
 let Fireteam_FireteamDateRange_Lookup: EnumLookup = [
    "0": .Fireteam_FireteamDateRange(0, "All"),
    "1": .Fireteam_FireteamDateRange(1, "Now"),
@@ -1379,6 +1510,8 @@ let Fireteam_FireteamPlatform_Lookup: EnumLookup = [
    "1": .Fireteam_FireteamPlatform(1, "Playstation4"),
    "2": .Fireteam_FireteamPlatform(2, "XboxOne"),
    "3": .Fireteam_FireteamPlatform(3, "Blizzard"),
+   "4": .Fireteam_FireteamPlatform(4, "Steam"),
+   "5": .Fireteam_FireteamPlatform(5, "Stadia"),
 ]
 
 let Fireteam_FireteamPlatformInviteResult_Lookup: EnumLookup = [
@@ -1636,11 +1769,6 @@ let Ignores_IgnoreStatus_Lookup: EnumLookup = [
    "32": .Ignores_IgnoreStatus(32, "IgnoredGlobal"),
 ]
 
-let Partnerships_PartnershipType_Lookup: EnumLookup = [
-   "0": .Partnerships_PartnershipType(0, "None"),
-   "1": .Partnerships_PartnershipType(1, "Twitch"),
-]
-
 let Trending_TrendingEntryType_Lookup: EnumLookup = [
    "0": .Trending_TrendingEntryType(0, "News"),
    "1": .Trending_TrendingEntryType(1, "DestinyItem"),
@@ -1657,11 +1785,15 @@ let Trending_TrendingEntryType_Lookup: EnumLookup = [
 ]
 
 let User_OptInFlags_Lookup: EnumLookup = [
+   "0": .User_OptInFlags(0, "None"),
    "1": .User_OptInFlags(1, "Newsletter"),
    "2": .User_OptInFlags(2, "System"),
    "4": .User_OptInFlags(4, "Marketing"),
    "8": .User_OptInFlags(8, "UserResearch"),
    "16": .User_OptInFlags(16, "CustomerService"),
    "32": .User_OptInFlags(32, "Social"),
+   "64": .User_OptInFlags(64, "PlayTests"),
+   "128": .User_OptInFlags(128, "PlayTestsLocal"),
+   "256": .User_OptInFlags(256, "Careers"),
 ]
 
